@@ -1,0 +1,54 @@
+namespace: desp-aas
+frontend:
+  domain: localhost
+  ssl:
+    enabled: false
+  devMode: true
+  resolver: kube-dns.kube-system.svc.cluster.local
+rabbitmq:
+  mq_server: rabbitmq-service
+elastic:
+  url: elasticsearch-service
+  username: elastic
+  password: 7Xv0R7NA2FjF2f7m9w8S8Qn7
+  ssl_check: false
+  ssl: true 
+database_sandbox: sqlite+aiosqlite:///tests/test_database.db
+postgres:
+  collaborative_url: postgres-db-service
+  sandbox_url: postgres-db-service
+  username: despaas
+  password: postgres
+  sandbox_db: sandbox
+  collaborative_db: collaborative
+git:
+  url: https://gitlab-desp.desp-aas-preprod.acri-st.fr/
+  token: glpat-H-PY_XR4CZcyzoDsXMeD
+  project_group: desp-aas-assets-local
+discourse:
+  host: https://discourse.desp-aas.acri-st.fr/
+  api_key: a644657f45e50b53340fd303c01dfbbd9c9cf8375ffe488b2f63a6a59d56728d
+  ssl_check: False
+log_level:
+  global: DEBUG
+  services: {}
+authentication:
+  server: https://keycloak.desp-aas.acri-st.fr/auth/
+  collaborative_client_id: Collaborative
+  sandbox_client_id: Sandbox
+  callback_uri: http://#APP_NAME#-ui.local:8080/api/auth/callback/
+  sandbox_callback_uri: http://#APP_NAME#-ui.local:8081/api/auth/callback/
+  collaborative_callback_uri: http://#APP_NAME#-ui.local:8080/api/auth/callback/
+  collaborative_logged_out_url: http://localhost:8080/
+  sandbox_logged_out_url: http://localhost:8081/
+  admin_client_id: Admin
+  admin_callback_uri: http://#APP_NAME#-ui.local:8082/api/auth/callback/
+  admin_logged_out_url: http://localhost:8082/
+  realm: despaas
+project_management:
+  repository_group: desp-aas-projects-local
+  vm_webclient_url: https://hrz.desp-services.com/portal/webclient/#/home
+vm_management:
+  active_directory_bridge_url: http://192.168.102.105:9999
+storage:
+  image_storage_path: /data/
