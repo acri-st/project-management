@@ -25,8 +25,6 @@ The Microservices that make up the Sandbox project are the following:
 - **VM management** manages the virtual machines for the projects. These virtual machines are where the user manages their project and develops.
 - **Storage** Manages the project git files.
 
-![DESP-AAS Sandbox UI Architecture](https://gitlab.acri-cwa.fr/desp-aas/sandbox_service/sandbox-ui/-/raw/development/docs/architecture.png)
-
 
 ### What is the Sandbox UI?
 
