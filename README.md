@@ -1,4 +1,4 @@
-# DESP-AAS Sandbox UI
+# DESP-AAS Project Management
 
 
 ## Table of Contents
@@ -20,17 +20,22 @@
 DESP-AAS Sandbox is a service that allows users to develop applications and models using cloud based services and to ease the deployment to the DESP-AAS collaborative platform.
 
 The Microservices that make up the Sandbox project are the following: 
-- **Auth** Authentication service tu authenticate users.
-- **Project management** Project management system.
+- **Auth** Authentication service to authenticate users.
+- **Project management** Project management system. - *the current project*
 - **VM management** manages the virtual machines for the projects. These virtual machines are where the user manages their project and develops.
 - **Storage** Manages the project git files.
 
 
-### What is the Sandbox UI?
+### What is Project Management?
 
-The sandbox UI is a web application that interfaces with the microservices that comprise the DESP-AAS (Data Exchange and Service Platform - As A Service) ecosystem. It provides a user-friendly interface for testing, debugging, and interacting with various microservices in a controlled sandbox environment.
+Project Management is a microservice that serves as the central hub for managing projects within the DESP-AAS Sandbox ecosystem. It provides a comprehensive interface for creating, organizing, and overseeing sandbox project.
 
-The Sandbox UI also uses a DESP-AAS common library that contains interfaces to DESP-AAS services and styling.
+The Project Management UI enables users to:
+- Create and configure new projects
+- Manage project settings and configurations
+- Monitor project status and resources
+- Coordinate with other DESP-AAS sandbox microservices (Auth, VM management, Storage)
+- Access project development environments and tools
 
 ## Prerequisites
 
@@ -43,7 +48,7 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 ```bash
 git clone https://github.com/acri-st/DESPAAS-project-management.git
-cd DEESPAAS-project-management
+cd DESPAAS-project-management
 ```
 
 ## Development
