@@ -90,9 +90,7 @@ setup-env: ## Setup environment files
 setup-python: ## Setup Python virtual environment
 	@echo "Setting up Python environment..."
 	@source .env
-	@echo "UV_INDEX_DSY_PIP_PASSWORD: $(UV_INDEX_DSY_PIP_PASSWORD)"
-	export UV_INDEX_DSY_PIP_PASSWORD=$(UV_INDEX_DSY_PIP_PASSWORD)
-	@uv sync --project=microservice/pyproject.toml
+	@uv sync
 
 
 init: start_minikube pre_init addons ## Initialize a project and start the development environment
@@ -101,8 +99,6 @@ init: start_minikube pre_init addons ## Initialize a project and start the devel
 	@echo "======= > Init done please next time run 'make start' < ========="
 	@tilt up $(DEV_PROFILES)
 
-update_module: ## Update all submodules
-	@git submodule update --init
 
 pre_init:
 # Folders must be present before the storage is loaded by minikube so we can't move that to the tilt script 
@@ -120,12 +116,6 @@ start_minikube: ## Start minikube with the defined parameters
 	@echo "Using shell: $(SHELL)"
 	@echo "Starting minikube...$(UID):$(GID)"
 	@minikube start --preload=false --kubernetes-version=1.27.9 --driver=docker -p $(MINIKUBE_PROFILE) --namespace $(NAMESPACE) --cpus=4 --memory=10240 --mount --mount-string "$(PWD)/:/project" --mount-uid $(UID) --mount-gid $(GID)
-
-start: start_minikube ## Start the development environment
-	@echo "Switching kube context..."
-	@kubectl config set-context --current --namespace=$(NAMESPACE)
-	@eval $(minikube -p $MINIKUBE_PROFILE docker-env)
-	@tilt up $(DEV_PROFILES)
 
 down: ## Stop the development environment
 	@tilt down $(DEV_PROFILES) --context $(MINIKUBE_PROFILE)
